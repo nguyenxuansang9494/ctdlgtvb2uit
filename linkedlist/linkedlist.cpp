@@ -61,10 +61,6 @@ void add(LinkedList &linkedList, int index, int value)
     }
     // add the new node at the (index)th position
     prevCurrent->next = new Node{value, current};
-    if (index == linkedList.size)
-    {
-        linkedList.tail = linkedList.tail->next;
-    }
     // increment the list size
     linkedList.size++;
 }
