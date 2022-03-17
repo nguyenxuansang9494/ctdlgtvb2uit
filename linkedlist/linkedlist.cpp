@@ -108,6 +108,20 @@ void remove(LinkedList &linkedList, int index)
     linkedList.size--;
 }
 
+Node *get(LinkedList linkedList, int index)
+{
+    if (index < 0 || index >= linkedList.size)
+    {
+        return nullptr;
+    }
+    Node *current = linkedList.head;
+    for (int i = 1; i <= index; i++)
+    {
+        current = current->next;
+    }
+    return current;
+}
+
 void printOutList(LinkedList linkedList)
 {
     Node *current = linkedList.head;
