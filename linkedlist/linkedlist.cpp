@@ -44,6 +44,7 @@ void add(LinkedList &linkedList, int index, int value)
         linkedList.size++;
         return;
     }
+    // if index equals to size, add a new node after tail and assign the new node to the tail
     if (index == linkedList.size)
     {
         linkedList.tail->next = new Node{value, nullptr};
