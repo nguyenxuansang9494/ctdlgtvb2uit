@@ -26,32 +26,45 @@ LinkedList init()
 
 void add(LinkedList &linkedList, int index, int value)
 {
+    // index out of bound.
     if (index > linkedList.size || index < 0)
     {
         return;
     }
+    // if size of list is 0, just init a list with size 1 and assign it to the original list
     if (linkedList.size == 0)
     {
         linkedList = init(value);
         return;
     }
+    // if index is 0, assign a new node point to old head node to old head node
     if (index == 0)
     {
         linkedList.head = new Node{value, linkedList.head};
         linkedList.size++;
         return;
     }
+    if (index == linkedList.size)
+    {
+        linkedList.tail->next = new Node{value, nullptr};
+        linkedList.tail = linkedList.tail->next;
+        linkedList.size++;
+        return;
+    }
+    // for loop to traverse to the node at the index
     Node *current = linkedList.head, *prevCurrent;
     for (int i = 1; i <= index; i++)
     {
         prevCurrent = current;
         current = current->next;
     }
+    // add the new node at the (index)th position
     prevCurrent->next = new Node{value, current};
     if (index == linkedList.size)
     {
         linkedList.tail = linkedList.tail->next;
     }
+    // increment the list size
     linkedList.size++;
 }
 
