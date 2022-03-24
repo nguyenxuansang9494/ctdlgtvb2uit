@@ -53,14 +53,13 @@ void add(LinkedList &linkedList, int index, int value)
         return;
     }
     // for loop to traverse to the node at the index
-    Node *current = linkedList.head, *prevCurrent;
-    for (int i = 1; i <= index; i++)
+    Node *current = linkedList.head;
+    for (int i = 1; i < index; i++)
     {
-        prevCurrent = current;
         current = current->next;
     }
     // add the new node at the (index)th position
-    prevCurrent->next = new Node{value, current};
+    current->next = new Node{value, current->next};
     // increment the list size
     linkedList.size++;
 }
@@ -135,8 +134,10 @@ int main(int argc, char const *argv[])
     addTail(linkedList, 10);
     addTail(linkedList, 20);
     addHead(linkedList, 30);
+    printOutList(linkedList);
     add(linkedList, 3, 40);
-    add(linkedList, 1, 100);
+    printOutList(linkedList);
+    add(linkedList, 3, 100);
     printOutList(linkedList);
     remove(linkedList, 1);
     printOutList(linkedList);
